@@ -1,0 +1,14 @@
+../.idea/
+.pytest_cache/
+__init__
+../.__pycache__/
+../.__init__.py/
+../.vevn/
+
+
+
+
+
+
+
+
