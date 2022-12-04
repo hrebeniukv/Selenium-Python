@@ -4,6 +4,10 @@ from aqa_framework.page_object.summary_order_page import SummaryOrderPage
 from aqa_framework.utilities.web_ui.base_page import BasePage
 
 
+# from aqa_framework.page_object.summary_order_page import SummaryOrderPage
+# from aqa_framework.utilities.web_ui.base_page import BasePage
+
+
 class CheckoutDeliverPage(BasePage):
 
     def __init__(self, driver):

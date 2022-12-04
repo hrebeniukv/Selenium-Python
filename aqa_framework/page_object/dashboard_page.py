@@ -1,10 +1,17 @@
 from selenium.webdriver.common.by import By
 
-from aqa_framework.page_object.cart_page import CartPage
 from aqa_framework.page_object.adress_data_page import AddressDataPage
+from aqa_framework.page_object.cart_page import CartPage
 from aqa_framework.page_object.order_details_page import OrderDetailsPage
 from aqa_framework.page_object.personal_data_page import PersonalDataPage
 from aqa_framework.utilities.web_ui.base_page import BasePage
+
+
+# from aqa_framework.page_object.cart_page import CartPage
+# from aqa_framework.page_object.adress_data_page import AddressDataPage
+# from aqa_framework.page_object.order_details_page import OrderDetailsPage
+# from aqa_framework.page_object.personal_data_page import PersonalDataPage
+# from aqa_framework.utilities.web_ui.base_page import BasePage
 
 
 class DashboardPage(BasePage):

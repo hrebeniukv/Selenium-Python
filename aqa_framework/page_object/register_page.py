@@ -1,6 +1,11 @@
 from selenium.webdriver.common.by import By
-from aqa_framework.utilities.web_ui.base_page import BasePage
+
 from aqa_framework.page_object.dashboard_page import DashboardPage
+from aqa_framework.utilities.web_ui.base_page import BasePage
+
+
+# from aqa_framework.utilities.web_ui.base_page import BasePage
+# from aqa_framework.page_object.dashboard_page import DashboardPage
 
 
 class RegisterPage(BasePage):

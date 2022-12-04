@@ -3,6 +3,9 @@ import pytest
 from aqa_framework.utilities.config_parser import ReadConfig
 
 
+# from aqa_framework.utilities.config_parser import ReadConfig
+
+
 @pytest.mark.sanity
 def test_redirection_to_create_account(open_login_page):
     login_page = open_login_page

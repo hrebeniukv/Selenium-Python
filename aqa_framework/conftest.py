@@ -8,9 +8,15 @@ from aqa_framework.utilities.config_parser import ReadConfig
 from aqa_framework.utilities.driver_factory import DriverFactory
 
 
-# @pytest.fixture(scope='session')
-# @pytest.fixture()
-# @pytest.fixture(scope='session')
+# from page_object.home_page import HomePage
+# from aqa_framework.page_object.home_page import LoginPage
+# from page_object.product_detais_page import PDP
+# from page_object.register_page import RegisterPage
+# from utilities.config_parser import ReadConfig
+# from utilities.driver_factory import DriverFactory
+
+
+
 @pytest.fixture()
 def create_driver():
     driver = DriverFactory.create_driver(driver_id=ReadConfig.get_browser_id())
@@ -54,9 +60,5 @@ def open_pdp(login, create_driver):
     HomePage(create_driver).go_to_pdp()
     return PDP(create_driver)
 
-
-    # home_page = HomePage(create_driver.get(ReadConfig.get_base_url()))
-    # pdp = home_page.go_to_pdp()
-    # return pdp
 
 

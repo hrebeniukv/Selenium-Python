@@ -1,5 +1,4 @@
-
-.idea/
+../.idea/
 .pytest_cache/
 __init__
 aqa_framework/__pycache__/

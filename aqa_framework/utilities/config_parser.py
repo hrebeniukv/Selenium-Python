@@ -1,8 +1,13 @@
 import configparser
 from random import randint
 
+from aqa_framework.CONSTANS import ROOT_DIR
+
+# from aqa_framework.CONSTANS import ROOT_DIR
+
 config = configparser.RawConfigParser()
-config.read('/home/aqa/PycharmProjects/pythonProject/configurations/configuration.ini')
+# config.read('/home/aqa/PycharmProjects/pythonProject/configurations/configuration.ini')
+config.read(f'{ROOT_DIR}/configurations/configuration.ini')
 
 
 class ReadConfig:

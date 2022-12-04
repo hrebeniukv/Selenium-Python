@@ -6,6 +6,10 @@ from aqa_framework.page_object.wish_list import WishList
 from aqa_framework.utilities.web_ui.base_page import BasePage
 
 
+# from aqa_framework.page_object.wish_list import WishList
+# from aqa_framework.utilities.web_ui.base_page import BasePage
+
+
 class PDP(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
