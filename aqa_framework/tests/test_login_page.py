@@ -3,9 +3,6 @@ import pytest
 from aqa_framework.utilities.config_parser import ReadConfig
 
 
-# from aqa_framework.utilities.config_parser import ReadConfig
-
-
 @pytest.mark.sanity
 def test_redirection_to_create_account(open_login_page):
     login_page = open_login_page
@@ -22,16 +19,16 @@ def test_redirection_to_reset_password(open_login_page):
 
 
 @pytest.mark.regresion
-def test_protected_password_field(open_login_page):
+def test_protected_password_field(open_login_page, config_data):
     login_page = open_login_page
-    fild_data = login_page.set_password(ReadConfig.get_password()).get_data_password_field()
+    fild_data = login_page.set_password(config_data.user_data["password"]).get_data_password_field()
     assert fild_data is True, 'The password field has text format'
 
 
 @pytest.mark.regresion
-def test_show_password(open_login_page):
+def test_show_password(open_login_page, config_data):
     login_page = open_login_page
-    fild_data = login_page.set_password(ReadConfig.get_password()).show_password().get_data_password_field()
+    fild_data = login_page.set_password(config_data.user_data["password"]).show_password().get_data_password_field()
     assert fild_data is False, 'Password is not visible after checking checkbox'
 
 

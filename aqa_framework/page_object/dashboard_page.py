@@ -5,15 +5,10 @@ from aqa_framework.page_object.cart_page import CartPage
 from aqa_framework.page_object.order_details_page import OrderDetailsPage
 from aqa_framework.page_object.personal_data_page import PersonalDataPage
 from aqa_framework.utilities.web_ui.base_page import BasePage
+from aqa_framework.utilities.decorators import auto_steps
 
 
-# from aqa_framework.page_object.cart_page import CartPage
-# from aqa_framework.page_object.adress_data_page import AddressDataPage
-# from aqa_framework.page_object.order_details_page import OrderDetailsPage
-# from aqa_framework.page_object.personal_data_page import PersonalDataPage
-# from aqa_framework.utilities.web_ui.base_page import BasePage
-
-
+@auto_steps
 class DashboardPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
@@ -26,7 +21,6 @@ class DashboardPage(BasePage):
     __billing_address = (By.XPATH, '//div[contains(@class, "billing")]/div')
     __last_order_number = (By.XPATH, '//tr[1]/td[1]')
     __show_order_button = (By.XPATH, '//table[contains(@class, "order")]//tr[1]//a[@class="action view"]')
-
 
     def is_visible_customer_information(self):
         return self._is_visible(self.__contact_data)
@@ -58,3 +52,4 @@ class DashboardPage(BasePage):
     def show_order_details_page(self):
         self._click(self.__show_order_button)
         return OrderDetailsPage(self._driver)
+

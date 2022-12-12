@@ -3,10 +3,8 @@ from random import randint
 
 from aqa_framework.CONSTANS import ROOT_DIR
 
-# from aqa_framework.CONSTANS import ROOT_DIR
-
 config = configparser.RawConfigParser()
-# config.read('/home/aqa/PycharmProjects/pythonProject/configurations/configuration.ini')
+
 config.read(f'{ROOT_DIR}/configurations/configuration.ini')
 
 
@@ -58,3 +56,5 @@ class ReadConfig:
     def get_email_registration():
         domain = config.get('user_data_registration', 'domain')
         return f'{ReadConfig.get_name_registration()}+{randint(0, 1000)}{domain}'
+
+

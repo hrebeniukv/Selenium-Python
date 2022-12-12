@@ -2,13 +2,10 @@ from selenium.webdriver.common.by import By
 
 from aqa_framework.utilities.feke_data import FakeData
 from aqa_framework.utilities.web_ui.base_page import BasePage
+from aqa_framework.utilities.decorators import auto_steps
 
 
-# from aqa_framework.utilities.feke_data import FakeData
-#
-# from aqa_framework.utilities.web_ui.base_page import BasePage
-
-
+@auto_steps
 class AddressDataPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
@@ -58,74 +55,3 @@ class AddressDataPage(BasePage):
 
     def click_save_button(self):
         self._click(self.__save_address_button)
-
-    # def set_name(self, name):
-    #     self._send_keys(self.__name_input, name)
-    #     return self
-    #
-    # def set_last_name(self, last_name):
-    #     self._send_keys(self.__last_name, last_name)
-    #     return self
-    #
-    # def set_phone_number(self, phone_number):
-    #     self._send_keys(self.__phone_number_input, phone_number)
-    #     return self
-    #
-    # def set_address_input(self, address_input):
-    #     self._send_keys(self.__address_input, address_input)
-    #     return self
-    #
-    # def select_country(self, country):
-    #     self._send_keys(self.__country_drop_down, country)
-    #     return self
-    #
-    # def select_region(self, region):
-    #     self._send_keys(self.__region_drop_down, region)
-    #     return self
-    #
-    # def set_city(self, city):
-    #     self._send_keys(self.__city_input, city)
-    #     return self
-    #
-    # def set_post_code(self, post_code):
-    #     self._send_keys(self.__post_code, post_code)
-    #     return self
-    #
-    # def click_save_button(self):
-    #     self._click(self.__save_address_button)
-    #
-
-    # def set_name(self, localization):
-    #     self._send_keys(self.__name_input, FakeData.get_name(localization))
-    #     return self
-    #
-    # def set_last_name(self, localization):
-    #     self._send_keys(self.__last_name, FakeData.get_last_name(localization))
-    #     return self
-    #
-    # def set_phone_number(self, localization):
-    #     self._send_keys(self.__phone_number_input, FakeData.get_phone_number(localization))
-    #     return self
-    #
-    # def set_address_input(self, localization):
-    #     self._send_keys(self.__address_input, FakeData.get_address(localization))
-    #     return self
-    #
-    # def select_country(self, country):
-    #     self._send_keys(self.__country_drop_down, country)
-    #     return self
-    #
-    # def select_region(self, region):
-    #     self._send_keys(self.__region_drop_down, region)
-    #     return self
-    #
-    # def set_city(self, city,localization):
-    #     self._send_keys(self.__city_input, FakeData.get_city(localization))
-    #     return self
-    #
-    # def set_post_code(self, localization):
-    #     self._send_keys(self.__post_code, FakeData.get_post_code(localization))
-    #     return self
-    #
-    # def click_save_button(self):
-    #     self._click(self.__save_address_button)

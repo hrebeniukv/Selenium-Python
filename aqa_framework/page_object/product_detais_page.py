@@ -1,15 +1,11 @@
 import random
-
 from selenium.webdriver.common.by import By
-
 from aqa_framework.page_object.wish_list import WishList
 from aqa_framework.utilities.web_ui.base_page import BasePage
+from aqa_framework.utilities.decorators import auto_steps
 
 
-# from aqa_framework.page_object.wish_list import WishList
-# from aqa_framework.utilities.web_ui.base_page import BasePage
-
-
+@auto_steps
 class PDP(BasePage):
     def __init__(self, driver):
         super().__init__(driver)

@@ -30,3 +30,11 @@ class FakeData:
     @staticmethod
     def get_region(localization):
         return Faker(localization).region().lower().replace(" ", "")
+
+    @staticmethod
+    def get_email(name):
+        return f"{name}@{Faker().free_email_domain()}"
+
+    @staticmethod
+    def get_password():
+        return Faker().password(10)

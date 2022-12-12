@@ -1,17 +1,12 @@
 from selenium.webdriver.common.by import By
-
 from aqa_framework.page_object.dashboard_page import DashboardPage
 from aqa_framework.page_object.register_page import RegisterPage
 from aqa_framework.page_object.reset_password_page import ResetPasswordPage
+from aqa_framework.utilities.decorators import auto_steps
 from aqa_framework.utilities.web_ui.base_page import BasePage
 
 
-# from aqa_framework.utilities.web_ui.base_page import BasePage
-# from aqa_framework.page_object.dashboard_page import DashboardPage
-# from aqa_framework.page_object.register_page import RegisterPage
-# from aqa_framework.page_object.reset_password_page import ResetPasswordPage
-
-
+@auto_steps
 class LoginPage(BasePage):
 
     def __init__(self, driver):
