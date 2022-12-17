@@ -1,0 +1,9 @@
+.idea/
+alure_report/
+aqa_framework/.idea/
+aqa_framework/__pycache__/
+aqa_framework/page_object/__pycache__/
+aqa_framework/tests/__pycache__/
+aqa_framework/utilities/__pycache__/
+aqa_framework/utilities/web_ui/__pycache__/
+

@@ -1,50 +1,61 @@
-import pytest
+from contextlib import suppress
 
+import pytest
+import json
+import allure
 from aqa_framework.page_object.home_page import HomePage
 from aqa_framework.page_object.login_page import LoginPage
 from aqa_framework.page_object.product_detais_page import PDP
 from aqa_framework.page_object.register_page import RegisterPage
-from aqa_framework.utilities.config_parser import ReadConfig
+from aqa_framework.utilities.configuration import Configuration
 from aqa_framework.utilities.driver_factory import DriverFactory
+from aqa_framework.CONSTANS import ROOT_DIR
 
 
-# from page_object.home_page import HomePage
-# from aqa_framework.page_object.home_page import LoginPage
-# from page_object.product_detais_page import PDP
-# from page_object.register_page import RegisterPage
-# from utilities.config_parser import ReadConfig
-# from utilities.driver_factory import DriverFactory
-
+@pytest.hookimpl(hookwrapper=True, tryfirst=True)
+def pytest_runtest_makereport(item):
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, "rep_" + rep.when, rep)
+    return rep
 
 
 @pytest.fixture()
-def create_driver():
-    driver = DriverFactory.create_driver(driver_id=ReadConfig.get_browser_id())
+def create_driver(config_data, request):
+    driver = DriverFactory.create_driver(driver_id=config_data.browser_data['browser_id'])
     driver.maximize_window()
     yield driver
+    if request.node.rep_call.failed:
+        with suppress(Exception):
+            allure.attach(driver.get_screenshot_as_png(), name=request.function.__name__,
+                          attachment_type=allure.attachment_type.PNG)
     driver.quit()
 
 
+@pytest.fixture(scope='session')
+def config_data():
+    with open(f'{ROOT_DIR}/configurations/configuration.json') as f:
+        data = f.read()
+        json_to_dict = json.loads(data)
+    config = Configuration(**json_to_dict)
+    return config
+
+
 @pytest.fixture()
-def open_login_page(create_driver):
-    create_driver.get(ReadConfig.get_login_page_url())
+def open_login_page(create_driver, config_data: Configuration):
+    create_driver.get(f"{config_data.app_info['base_url']}{config_data.app_info['login_page_endpoint']}")
     return LoginPage(create_driver)
 
 
 @pytest.fixture()
-def open_register_page(create_driver):
-    create_driver.get(ReadConfig.get_register_page_url())
+def open_register_page(create_driver, config_data):
+    create_driver.get(f"{config_data.app_info['base_url']}{config_data.app_info['register_page_endpoint']}")
     return RegisterPage(create_driver)
 
 
 @pytest.fixture()
-def login(open_login_page):
-    return open_login_page.login(ReadConfig.get_email(), ReadConfig.get_password())
-
-
-@pytest.fixture(scope='session')
-def localization_pl():
-    return 'pl_PL'
+def login(open_login_page, config_data):
+    return open_login_page.login(config_data.user_data['email'], config_data.user_data['password'])
 
 
 @pytest.fixture()
@@ -54,11 +65,7 @@ def open_cart_page(login):
 
 
 @pytest.fixture()
-def open_pdp(login, create_driver):
-    login
-    create_driver.get(ReadConfig.get_base_url())
+def open_pdp(login, create_driver, config_data):
+    create_driver.get(config_data.app_info['base_url'])
     HomePage(create_driver).go_to_pdp()
     return PDP(create_driver)
-
-
-

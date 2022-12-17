@@ -1,17 +1,15 @@
 from selenium.webdriver.common.by import By
 
-# from aqa_framework.page_object.checkout_delivery_page import CheckoutDeliverPage
-# from aqa_framework.page_object.home_page import HomePage
-# from aqa_framework.page_object.product_detais_page import PDP
-# from aqa_framework.utilities.web_ui.base_page import BasePage
 from random import randint
 
 from aqa_framework.page_object.checkout_delivery_page import CheckoutDeliverPage
 from aqa_framework.page_object.home_page import HomePage
 from aqa_framework.page_object.product_detais_page import PDP
 from aqa_framework.utilities.web_ui.base_page import BasePage
+from aqa_framework.utilities.decorators import auto_steps
 
 
+@auto_steps
 class CartPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)

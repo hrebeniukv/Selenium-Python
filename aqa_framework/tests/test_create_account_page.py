@@ -1,38 +1,39 @@
 import pytest
 
 from aqa_framework.utilities.config_parser import ReadConfig
-
-
-# from aqa_framework.utilities.config_parser import ReadConfig
+from aqa_framework.utilities.feke_data import FakeData
 
 
 @pytest.mark.sanity
-def test_rigister_new_customer(open_register_page):
+def test_rigister_new_customer(open_register_page, config_data):
+    localization = config_data.fake_data['localization']
+    name = FakeData.get_name(localization)
+    last_name = FakeData.get_last_name(localization)
+    email = FakeData.get_email(name)
+    password = FakeData.get_password()
     register_page = open_register_page
-    dashboard_page = register_page.register_new(ReadConfig.get_name_registration(),
-                                                ReadConfig.get_last_name_registration(),
-                                                ReadConfig.get_email_registration(), ReadConfig.get_password())
+    dashboard_page = register_page.register_new(name, last_name, email, password)
     assert dashboard_page.is_visible_customer_information() is True, "The new account haven' beem created"
 
 
 @pytest.mark.regresion
-def test_protected_password_field(open_register_page):
+def test_protected_password_field(open_register_page, config_data):
     register_page = open_register_page
-    fild_data = register_page.set_password(ReadConfig.get_password()).get_data_password_field()
+    fild_data = register_page.set_password(config_data.user_data['password']).get_data_password_field()
     assert fild_data is True, 'The password field has text format'
 
 
 @pytest.mark.regresion
-def test_protected_password_confirmation_field(open_register_page):
+def test_protected_password_confirmation_field(open_register_page, config_data):
     register_page = open_register_page
-    fild_data = register_page.set_password_confirmation(ReadConfig.get_password()).get_data_password_field()
+    fild_data = register_page.set_password_confirmation(config_data.user_data['password']).get_data_password_field()
     assert fild_data is True, 'The password field has text format'
 
 
 @pytest.mark.regresion
-def test_show_password(open_register_page):
+def test_show_password(open_register_page,config_data):
     register_page = open_register_page
-    password_field = register_page.set_password(ReadConfig.get_password()).show_password().get_data_password_field()
+    password_field = register_page.set_password(config_data.user_data['password']).show_password().get_data_password_field()
     assert password_field is False, 'Password is not visible after checking checkbox'
 
 

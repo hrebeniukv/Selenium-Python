@@ -28,7 +28,7 @@ def test_add_to_wishlist(open_pdp):
 def test_add_to_compare(open_pdp):
     pdp = open_pdp
     pdp.click_compare_button()
-    assert pdp.is_visible_compare_product_link() is True, 'The comare products link is not visible'
+    assert pdp.is_visible_compare_product_link() is True, 'The compare products link is not visible'
 
 
 @pytest.mark.sanity

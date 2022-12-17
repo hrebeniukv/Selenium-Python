@@ -1,13 +1,10 @@
 from selenium.webdriver.common.by import By
-
 from aqa_framework.page_object.dashboard_page import DashboardPage
 from aqa_framework.utilities.web_ui.base_page import BasePage
+from aqa_framework.utilities.decorators import auto_steps
 
 
-# from aqa_framework.utilities.web_ui.base_page import BasePage
-# from aqa_framework.page_object.dashboard_page import DashboardPage
-
-
+@auto_steps
 class RegisterPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
